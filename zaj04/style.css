@@ -1,0 +1,23 @@
+main{
+    display: flex;
+}
+body {
+    background-color: lightblue;
+}
+#nav {
+    background-color: purple;
+}
+.article { 
+    background-color: moccasin;
+    flex:2;
+}
+.aside {
+    background-color: lightgreen;
+    flex:1;
+}
+.section {
+    background-color: red;
+}
+footer {
+    background-color: yellow;
+}
