@@ -1,0 +1,16 @@
+body {
+    background-color: peru;
+}
+#nav {
+    background-color: purple;
+}
+.aside {
+    background-color: burlywood;
+}
+.section {
+    background-color: red;
+}
+footer {
+    background-color: yellow;
+}
+
