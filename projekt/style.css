@@ -129,7 +129,12 @@ padding-left: 10px;
     padding-bottom: 10px;
        
 }
-
+#Usernewpost{
+    text-align: left;
+    color:white;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
 .container{
     background-color: black;
     
@@ -194,4 +199,18 @@ a:hover{
       padding-bottom: 10px;
       border-radius: 10px 30px;
       background-color: darkred;
+  }
+  #v-pills-tab{
+      background-color: rgb(139, 0, 12);
+      border-radius: 10px;
+  }
+
+  h5{
+      color:white;
+  }
+  .nav-pills .nav-link.active{
+      background-color: black;
+  }
+  .table{
+      border-radius: 0px 0px 10px 10px;
   }
