@@ -60,6 +60,7 @@ body {
 }
 #blocksection{
     background-color: rgb(139, 0, 12);
+    border-radius:0px 5px 5px 0px;
 }
 #aside {
     background-color:rgb(139, 0, 12);
@@ -162,8 +163,8 @@ padding-left: 10px;
     font-size: 17px;
   }
   #figureimg {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin: auto;
     margin-top: 10px; 
     display: block;
@@ -213,4 +214,32 @@ a:hover{
   }
   .table{
       border-radius: 0px 0px 10px 10px;
+  }
+
+  #usersection{
+    background-color: rgb(83, 8, 8);
+    color:white;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 5px 15px;
+  }
+
+  #usertable{
+      border-radius: 10px 30px;
+      color:white;
+  }
+  #usertable > thead{
+      background-color: red;
+
+  }
+
+  #usertable >tbody>tr{
+    background-color: black;
+    border:10px;
+    border-color:white;
+  }
+  textarea{
+      background-color: black;
+      color:white;
   }
