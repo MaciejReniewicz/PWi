@@ -2,13 +2,13 @@
 body {
     background-color: rgb(85, 51, 8);
 }
-#mainbody{
+.mainbody{
     background-color: rgb(85, 51, 8);
     padding-top:75px;
     min-height: 125px;
 }
 
-#mainrow{
+.mainrow{
     padding-left: 10px!important;
     padding-right: 0px!important;
     background-color: rgb(83, 8, 8);
@@ -19,32 +19,32 @@ body {
 #nav {
     background-color: rgb(82, 63, 0);
 }
-#subsection{
+.subsection{
     margin:0px;
     padding:0px;
     min-height: 100px;
 }
-#block{
+.block{
     margin:5px;
     padding:0px!important;
     border-radius: 5px;
     min-height: 90px;
 }
-#figure {
+.figure {
     background-color: rgb(139, 0, 12);
     float:left;
 
     border-radius: 5px 0px 0px 5px;
 }
 
-#main {
+.main {
     background-color: black;
     float: left;
     border-radius: 15px;
     padding-bottom:10px;
 }
-#section {
-    background-color: rgb(83, 8, 8);
+section {
+    background-color: rgb(83, 8, 8)!important;
     color:white;
     text-align: left;
     margin-bottom: 20px;
@@ -52,17 +52,17 @@ body {
     border-radius: 5px 30px;
 }
 
-#chapter {
+.chapter {
     background-color: rgb(139, 0, 12);
     clear: both;
     text-align: left;
     border-radius: 0px 5px 0px 0px;
 }
-#blocksection{
+.blocksection{
     background-color: rgb(139, 0, 12);
     border-radius:0px 5px 5px 0px;
 }
-#aside {
+aside {
     background-color:rgb(139, 0, 12);
     clear: both;
     text-align: left;
@@ -71,7 +71,7 @@ body {
 
 }
 
-#footer {
+footer {
     background-color: rgb(59, 59, 59);
     clear: both;
     padding-bottom: 0px;
@@ -82,20 +82,20 @@ p{
     text-align: center;
     color:white;
 }
-#p{
+.textleft{
     text-align: left;
     padding:0px;
     margin: 0px;
     color:white;
 }
-#area{
+.area{
     text-align: left;
     color:white;
     margin-bottom: 20px;
     margin-top: 10px;
 }
 
-#subject {
+.subject {
     background-color: rgb(139, 0, 12);
     float:left;
     text-align: center;
@@ -103,34 +103,34 @@ p{
     border-radius: 5px 0px 0px 30px;
 }
 
-#comments{
+.comments{
     background-color: rgb(139, 0, 12);
     min-height: 40px;
 }
-#originalposter{
+.originalposter{
     background-color: rgb(139, 0, 12);
     min-height: 40px;
 }
-#date{
+.date{
     background-color: rgb(139, 0, 12);
     min-height: 40px;
     border-radius: 0px 15px 5px 0px;
 }
 
-#postuser{
+.postuser{
 padding-left: 10px;
 }
-#post{
+.post{
     padding-bottom: 15px;
 }
-#subjectrow{
+.subjectrow{
     background-color: rgb(83, 8, 8);
     min-height: 50px;
     border-radius: 5px 100px 5px 15px;
     padding-bottom: 10px;
        
 }
-#Usernewpost{
+.Usernewpost{
     text-align: left;
     color:white;
     margin-bottom: 20px;
@@ -162,84 +162,83 @@ padding-left: 10px;
     text-decoration: none;
     font-size: 17px;
   }
-  #figureimg {
+.figureimg {
     width: 70px;
     height: 70px;
     margin: auto;
     margin-top: 10px; 
     display: block;
 }
-  .navbar a:hover {
+.navbar a:hover {
     background:maroon;
-  }
-  #mainmenu{
+}
+#mainmenu{
     align-self: flex-end;
-  }
-  a{
-      color:white;
-  }
+}
+a{
+    color:white;
+}
 a:hover{
     color: white;
     text-decoration: none;
 }
-  a:active{
-      background-color: white;
-      color:black;
-  }
+a:active{
+    background-color: white;
+    color:black;
+}
 
-  .breadcrumb{
+.breadcrumb{
     background-color: #333;
     min-height:50px;
     width: 100%;
-  }
-  .form-check{
-      color:white;
-  }
-  .register-form{
-      padding-top:10px; 
-      padding-bottom: 10px;
-      border-radius: 10px 30px;
-      background-color: darkred;
-  }
-  #v-pills-tab{
-      background-color: rgb(139, 0, 12);
-      border-radius: 10px;
-  }
+}
+.form-check{
+    color:white;
+}
+.register-form{
+    padding-top:10px; 
+    padding-bottom: 10px;
+    border-radius: 10px 30px;
+    background-color: darkred;
+}
+#v-pills-tab{
+    background-color: rgb(139, 0, 12);
+    border-radius: 10px;
+}
 
-  h5{
-      color:white;
-  }
-  .nav-pills .nav-link.active{
-      background-color: black;
-  }
-  .table{
-      border-radius: 0px 0px 10px 10px;
-  }
+h5{
+    color:white;
+}
+.nav-pills .nav-link.active{
+    background-color: black;
+}
+.table{
+    border-radius: 0px 0px 10px 10px;
+}
 
-  #usersection{
+.usersection{
     background-color: rgb(83, 8, 8);
     color:white;
     text-align: left;
     margin-bottom: 20px;
     margin-top: 10px;
     border-radius: 5px 15px;
-  }
+}
 
-  #usertable{
-      border-radius: 10px 30px;
-      color:white;
-  }
-  #usertable > thead{
-      background-color: red;
+.usertable{
+    border-radius: 10px 30px;
+    color:white;
+}
+.usertable > thead{
+    background-color: red;
+}
 
-  }
-
-  #usertable >tbody>tr{
+.usertable >tbody>tr{
     background-color: black;
     border:10px;
     border-color:white;
   }
-  textarea{
-      background-color: black;
-      color:white;
-  }
+textarea{
+    background-color: black;
+    color:white;
+}
