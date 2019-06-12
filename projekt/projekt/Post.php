@@ -3,6 +3,22 @@
     session_start();
     $nazwa_podrozdzialu = $_GET['nazwa_podrozdzialu'];
     $nazwa_watku = $_GET['nazwa_watku'];
+
+    require_once "connect.php";
+
+
+	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+	
+	if ($polaczenie->connect_errno!=0)
+	{
+		echo "Error: ".$polaczenie->connect_errno;
+	}
+    else
+	{   
+        $rezultat = @$polaczenie->query("SELECT * FROM post join thread on thread.id = post.thread_id join user on post.user_id = user.id where thread.topic='$nazwa_watku'");
+        $polaczenie->close();
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +31,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="style.css" rel="stylesheet">
-    <title>Post</title>
+    <title><?=$nazwa_watku?></title>
 
 </head>
 
@@ -75,128 +91,72 @@
                 <li class="breadcrumb-item active" aria-current="page"><?=$nazwa_watku?></li>
             </ol>
         </nav>
-
+        <?php while($row = $rezultat->fetch_row())
+        {
+        ?>
         <div class="main col-sm-12 col-md-10 offset-sm-0 offset-md-1 border border-light mb-1"
             style="padding-bottom:10px;">
             <div class="area">
-                <div id="subjectrow" class="row-fluid">
-                    <p id="p">Subject</p>
-                </div>
                 <div class="thread row">
                     <div class="col-2 mx-auto">
                         <a href="User.php">
                             <div class="postuser row-fluid mx-auto">
                                 <figure>
-                                    <img src="GDiscussion.jpg" class="figureimg border border-dark" alt="">
+                                    <img src="<?php printf("%s",$row[19])?>" class="figureimg border border-dark" alt="">
                                 </figure>
                             </div>
                             <div class="postuser row-fluid mx-auto">
-                                Username
+                            <?php printf("%s",$row[14])?>
                             </div>
                         </a>
                     </div>
                     <div class="col-10">
-                        Lorem ipsum dolor sit amet, possit dolorum cum ne. Nec explicari consulatu no, eu vel etiam
-                        volumus quaerendum. Cum utamur aliquam eu. Verear minimum per at, no eam summo torquatos
-                        voluptaria. An mel diceret adversarium. Vix accusam menandri contentiones ei, ex animal nostrum
-                        lucilius qui.
-                        Sed ea dolorem gubergren, augue malorum definiebas vis ei. Qui te expetenda rationibus. Ex quo
-                        latine gloriatur. Sea ne facilisis interesset, pri choro eligendi cu. Nulla tritani postulant
-                        usu ex, in utamur nominati interpretaris eum, ius ea fierent eleifend.
-                        Te sed novum nihil congue. Primis appetere duo cu, vim ridens voluptaria an. Has id adolescens
-                        mnesarchum,
-                        sit te ocurreret principes, eos ea everti detraxit. An aliquip urbanitas voluptatum eum, prompta
-                        atomorum
-                        accusamus sed ei. Ne pro falli tibique, et vix scripta intellegam, his id alterum omnesque
-                        maluisset.
-                        Et augue corpora patrioque quo.
-                        Id facete adipiscing conclusionemque duo, nominavi persecuti an cum. Omnesque molestie
-                        reformidans ei eam.
-                        Duis augue duo ut, ut vel ullum summo omnes, ea vis bonorum oportere. Cu mei nibh omnes ornatus,
-                        ex libris
-                        gubergren nec. Graeco dicunt accusam eum ea, ne atqui etiam eloquentiam qui. Usu ferri repudiare
-                        at.
-                        Nisl eius gloriatur mea ei, an nostro omnesque invenire ius. Ut malis adolescens scripserit eum.
-                        Ex inermis
-                        senserit instructior has, ex eos reque inani debitis, ius ad utamur tamquam. Vim no nulla
-                        definiebas.
-                        Et eum saepe blandit temporibus. Eos vero fabulas cu, an vidit placerat pertinacia mea, nam
-                        inani mundi cu.
-                        Te duo error fabulas tibique, pri ex eros lorem invidunt. Sit novum volutpat an, vel eu nibh
-                        munere.
-                        Has alia mutat putant ne, sed viris efficiendi eloquentiam at. Ne sed quem blandit, est id dicam
-                        indoctum,
-                        nam accusamus mnesarchum ei.
+                    <?php printf("%s",$row[1]);
+                    $id_watku = $row[4];?>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="main col-sm-12 col-md-10 offset-sm-0 offset-md-1 border border-light mb-1">
-            <div class="area">
-                <div class="thread row">
-                    <div class="col-2">
-                        <a href="User.php">
-                            <div class="postuser row-fluid mx-auto">
-                                <figure>
-                                    <img src="GDiscussion.jpg" class="figureimg border border-dark" alt="">
-                                </figure>
-                            </div>
-                            <div class="postuser row-fluid mx-auto">
-                                Username
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-10">
-                        Lorem ipsum dolor sit amet, possit dolorum cum ne. Nec explicari consulatu no, eu vel etiam
-                        volumus quaerendum. Cum utamur aliquam eu. Verear minimum per at, no eam summo torquatos
-                        voluptaria. An mel diceret adversarium. Vix accusam menandri contentiones ei, ex animal nostrum
-                        lucilius qui.
-                        Sed ea dolorem gubergren, augue malorum definiebas vis ei. Qui te expetenda rationibus. Ex quo
-                        latine gloriatur. Sea ne facilisis interesset, pri choro eligendi cu. Nulla tritani postulant
-                        usu ex, in utamur nominati interpretaris eum, ius ea fierent eleifend.
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-       x
+        <?php 
+        }
+        ?>
+        
+        <?php
+        if(isset($_SESSION['zalogowany'])){
+        ?>
         <div class="main col-sm-12 col-md-10 offset-sm-0 offset-md-1 border border-light mb-5 pb-0 mt-5 bg-dark">
-        <form action="CreatePost.php?nazwa=<?=$_GET['nazwa_posta']?>" method="post">
-            <div class="area">
-                <div class="thread row">
-                    <div class="col-2">
-                        <a href="User.php">
-                            <div class="postuser row-fluid mx-auto">
-                                <figure>
-                                    <img src="GDiscussion.jpg" class="figureimg border border-dark" alt="">
-                                </figure>
+            <form action="CreatePost.php?id_watku=<?=$id_watku?>" method="post">
+                <div class="area">
+                    <div class="thread row">
+                        <div class="col-2">
+                            <a href="User.php">
+                                <div class="postuser row-fluid mx-auto">
+                                    <figure>
+                                        <img src="<?php echo $_SESSION['awatar']; ?>" class="figureimg border border-dark" alt="">
+                                    </figure>
+                                </div>
+                                <div class="postuser row-fluid mx-auto">
+                                    You
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="form-group textarea rounded-corners">
+                                <textarea class="form-control" id="exampleFormControlTextarea345" rows="3" placeholder="Write your comment..." name ="comments"></textarea>
                             </div>
-                            <div class="postuser row-fluid mx-auto">
-                                You
-                            </div>
-                        </a>
+                        </div>
                     </div>
-                    <div class="col-md-10">
-                        <div class="form-group textarea rounded-corners">
-                            <textarea class="form-control" id="exampleFormControlTextarea345" rows="3" placeholder="Write your comment..." name ="comments"></textarea>
+                    <div class="row">
+                        <div class="col-12 my-2 px-0">
+                            <input type="submit" class="border border-danger" value="Reply" style="position: absolute;right:10px;bottom:0"/>
                         </div>
                     </div>
                 </div>
-            
-            </div>
-            <div class="row">
-                <div class="col-12 my-2 px-0">
-                    <input type="submit" class="border border-danger" value="Reply" style="position: absolute;right:10px;bottom:0"/>
-                </div>
-            </div>
+            </form>
         </div>
-    </form>
-
-
-    </div>
-
+        <?php
+        }
+        ?>
 
 
 

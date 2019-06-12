@@ -19,7 +19,7 @@
             $id_watku = $_GET['thread_id'];
         }
         else{
-            $id_watku=16;
+            $id_watku = $_GET["id_watku"];
         }
         require_once "connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
@@ -33,11 +33,11 @@
                 }
                 else
                 {   
-                        $thread_id = $polaczenie->query("select thread_id from post where id='1'");
+                        $thread_id = $polaczenie->query("select thread_id from post where id=$id_watku");
                         if ($polaczenie->query("INSERT INTO post VALUES (NULL, '$comments',now(), '$user_id','$id_watku')"))
                         {
                             $polaczenie->query("UPDATE user set last_activity = now() where id=$user_id");
-                            $_SESSION['stworzony']=date('m/d/Y h:i:s', time());
+                            $_SESSION['ostatnia_aktywnosc']=date("Y-m-d H:i:s");
                             $polaczenie->query("UPDATE thread set last_post = now() where id=$id_watku");
                             header('Location: Project.php'); 
                         }

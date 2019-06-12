@@ -9,7 +9,7 @@
     else{   
             $Subject = $_POST['Subject'];
             $Subsection = $_GET['nazwa_podrozdzialu'];
-            $user_id = $_SESSION['id'];
+            $user_id = $_SESSION['id']; 
             $comments = $_POST['comments'];
             require_once "connect.php";
             mysqli_report(MYSQLI_REPORT_STRICT);

@@ -17,16 +17,6 @@
 	if (isset($_SESSION['e_regulamin'])) unset($_SESSION['e_regulamin']);
 	if (isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
     
-    //Usuwanie danych watku
- /*   if(isset($_SESSION['thread_id'])) unset($_SESSION['thread_id']);
-    if(isset($_SESSION['temat'])) unset($_SESSION['temat']);
-    if(isset($_SESSION['stworzony'])) unset($_SESSION['watek_stworzony']);
-    if(isset($_SESSION['podrozdzial'])) unset($_SESSION['podrozdzia;']);
-    if(isset($_SESSION['id_usera'])) unset($_SESSION['id_usera']);
-    if(isset($_SESSION['czy_aktywny'])) unset($_SESSION['czy_aktywny']);
-    if(isset($_SESSION['czy_lepki'])) unset($_SESSION['czy_lepki']);
-    if(isset($_SESSION['nick_usera'])) unset($_SESSION['nick_usera']);
-    */
 ?>
 
 <!DOCTYPE html>

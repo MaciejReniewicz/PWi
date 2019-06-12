@@ -13,31 +13,12 @@
 	}
 	else
 	{
-        if ($rezultat = @$polaczenie->query("SELECT * FROM thread join user on thread.user_id = user.id WHERE subsection='$nazwa_podrozdzialu' order by last_post desc"))
-        {   $wiersz = $rezultat->fetch_assoc();
-            $_SESSION['thread_id'] = $wiersz['id'];
-
-            $ilu_watkow = $rezultat->num_rows;
-			if($ilu_watkow>0)
-			{   
-                $_SESSION['temat'] = $wiersz['subject'];
-                $_SESSION['watek_stworzony'] = $wiersz['created'];
-                $_SESSION['podrozdzial'] = $wiersz['subsection'];
-                $_SESSION['id_usera'] = $wiersz['user_id'];
-                $_SESSION['czy_aktywny'] = $wiersz['is_active'];
-                $_SESSION['czy_lepki'] = $wiersz['is_sticky'];
-                $_SESSION['ostatni_post'] = $wiersz['last_post'];
-                $_SESSION['nick_usera'] = $wiersz['nick'];
-                if ($rezultat2 = @$polaczenie->query("SELECT count(post.id) as commentno FROM post join thread on post.thread_id = thread.id WHERE Subsection='$nazwa_podrozdzialu'")){
-                    $wiersz1 = $rezultat2->fetch_assoc();
-                    $_SESSION['ile_komentarzy'] = $wiersz1['commentno'];
-                }
-                else {
-                    $_SESSION['blad'] = '<span style="color:red">NO COMMENTS</span>';
-                    $rezultat->free_result();
-                }
-            }
-        }
+        $rezultat1 = @$polaczenie->query("SELECT * FROM thread join user on thread.user_id = user.id WHERE subsection='$nazwa_podrozdzialu' and is_sticky!=1 order by last_post desc");
+           
+        $rezultat2 = @$polaczenie->query("SELECT * FROM thread join user on thread.user_id = user.id WHERE subsection='$nazwa_podrozdzialu' and is_sticky=1 order by last_post");
+        
+            
+      
         $polaczenie->close();
     }
 
@@ -115,36 +96,41 @@
             </ol>
         </nav>
 
-        <div class="main col-sm-12 col-md-8 col-xl-10 offset-sm-0 offset-md-2 offset-xl-1 border border-light mb-5">
+        <div class="main col-md-12 col-xl-10 offset-md-0 offset-xl-1 border border-light mb-5">
             <div class="area container mx-auto">
-                Sticky Threads
-                
-                    <a href="Post.php?nazwa_podrozdzialu=<?=$nazwa_podrozdzialu?>&nazwa_watku=<?=$_SESSION['temat']?>">
+            Sticky Threads
+                <?php
+                while($row2 = $rezultat2->fetch_row()){
+                    ?>
+                    <a href="Post.php?nazwa_podrozdzialu=<?=$nazwa_podrozdzialu?>&nazwa_watku=<?php printf("%s", $row2[1]);?>">
                             <div class="mainrow row border border-light">
-                                <div class="col-5">
+                                <div class="col-6">
                                     <div class="row">
                                         <div class="subject col-12">
-                                            <p class="p" style="float-left">Subject: <?=$_SESSION['temat'];?> </p>
+                                            <p class="p" style="float-left">Subject: <?php printf("%s", $row2[1]);?> </p>
                                         </div>
                                     </div>
                                 </div>
-                            <div class="col-2">
+                            <div class="col-1">
                                 <div class="comments row">
-                                    <p class="p">Comments: <?=$_SESSION['ile_komentarzy']-1;?></p>
+                                    <p class="p">ID: <?php printf("%s", $row2[0]);?></p>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="row originalposter">
-                                    <p class="p">Poster: <?=$_SESSION['nick_usera']?></p>
+                                    <p class="p">Poster: <?php printf("%s", $row2[9]);?></p>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="row date">
-                                    <p class="p">Last Post: <?=$_SESSION['ostatni_post']?></p>
+                                    <p class="p">Last Post: <?php printf("%s", $row2[7]);?></p>
                                 </div>
                             </div>
                         </div>
                     </a>
+                    <?php 
+                }
+                    ?>
 
             </div>
 
@@ -155,36 +141,42 @@
                 <div class="row">
                     <div class="col-12 my-2 px-0">
                         <a href="NewThread.php?nazwa_podrozdzialu=<?=$nazwa_podrozdzialu?>">
-                           <div class="btnSubmit bg-danger" style="border-radius: 10px;width:100px;">New Thread</div>
+                           <div class="btnSubmit bg-danger" style="border-radius: 10px;width:100px;padding-left:5px">New Thread</div>
                         </a>
                     </div>
                 </div>
-                <a href="Post.php?nazwa_podrozdzialu=<?=$nazwa_podrozdzialu?>">
-                    <div class="mainrow row border border-light">
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="subject col-12">
-                                    <p class="p">Subject</p>
+                <?php
+                while($row1 = $rezultat1->fetch_row()){
+                    ?>
+                    <a href="Post.php?nazwa_podrozdzialu=<?=$nazwa_podrozdzialu?>&nazwa_watku=<?php printf("%s", $row1[1]);?>">
+                            <div class="mainrow row border border-light">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <div class="subject col-12">
+                                            <p class="p" style="float-left">Subject: <?php printf("%s", $row1[1]);?> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-1">
+                                <div class="comments row">
+                                    <p class="p">ID: <?php printf("%s", $row1[0]);?></p>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row originalposter">
+                                    <p class="p">Poster: <?php printf("%s", $row1[9]);?></p>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="row date">
+                                    <p class="p">Last Post: <?php printf("%s", $row1[7]);?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <div class="comments row">
-                                <p class="p">Number</p>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="originalposter row">
-                                <p class="p">Poster</p>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="date row">
-                                <p class="p">Date</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                    <?php 
+                }
+                    ?>
             </div>
         </div>
     </div>

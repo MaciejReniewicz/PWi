@@ -120,7 +120,7 @@
 				{
 					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 					
-					if ($polaczenie->query("INSERT INTO user VALUES (NULL, '$nick', '$password', '$email','$sex', now(),'GDiscussion.jpg',NULL,0,1,'')"))
+					if ($polaczenie->query("INSERT INTO user VALUES (NULL, '$nick', '$password', '$email','$sex', now(),'Lore.jpg',NULL,0,1,'')"))
 					{
 						$_SESSION['udanarejestracja']=true;
                         header('Location: Project.php');

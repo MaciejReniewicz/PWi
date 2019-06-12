@@ -87,20 +87,14 @@
                 <div class="post row">
                     <div class="col-sm-12 col-lg-3">
                             <div class="postuser row pb-1">
-                                
                                 <img src="<?php echo $_SESSION['awatar']; ?>" class="border border-dark figureimg" alt="">
-                                
                             </div>
-                                <form action="User.php" method="post">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="file" required>
-                                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
-                                    </div>
-                                    <div class="row pt-1">
-                                        <button class="btn btn-lg btn-danger btn-block text-uppercase bg-danger w-50 h-25 mx-auto" type="submit" value="picture">Submit</button>
-                                    </div>
-                                </form>
+                        
+                        <form action="UpdateAvatar.php" method="post" enctype="multipart/form-data" >
+                        <input type="file" style="padding-left:10%" name="avatarFile"  />
+                        <input type="submit" style="margin-left:40%" value="upload" />
+                        </form>
+
                     </div>
                     <div class="col-sm-12 col-lg-9">    
                         <div class="row">
