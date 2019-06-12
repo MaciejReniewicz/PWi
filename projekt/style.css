@@ -1,6 +1,7 @@
 
 body {
     background-color: rgb(85, 51, 8);
+    color: white;
 }
 .mainbody{
     background-color: rgb(85, 51, 8);
@@ -79,7 +80,7 @@ footer {
     text-align: right;
 }
 p{
-    text-align: center;
+    text-align: left;
     color:white;
 }
 .textleft{
@@ -119,8 +120,10 @@ p{
 
 .postuser{
 padding-left: 10px;
+color:white;
+text-align: center!important;
 }
-.post{
+.thread{
     padding-bottom: 15px;
 }
 .subjectrow{
@@ -215,6 +218,12 @@ h5{
 .table{
     border-radius: 0px 0px 10px 10px;
 }
+tr > td > a{
+    color:black;
+}
+tr > td > a:hover{
+    color:darkred;
+}
 
 .usersection{
     background-color: rgb(83, 8, 8);
@@ -239,6 +248,26 @@ h5{
     border-color:white;
   }
 textarea{
-    background-color: black;
-    color:white;
+    background-color: black !important;
+    color:white !important;
+    border-color: red!important;
 }
+textarea:focus {
+    border:             1px solid rgb(238, 0, 32)!important;
+    box-shadow:         0 0 5px rgb(238, 0, 32)!important;
+  }
+input[type=button], input[type=submit], input[type=reset]{
+
+    background: black;
+    
+    color: white;
+    
+    border-style: outset;
+    
+    border-color: darkred;
+    
+    font: bold 15px arial, sans-serif;
+    
+    text-shadow:none;
+    
+    }
